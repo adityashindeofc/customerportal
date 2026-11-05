@@ -1,0 +1,615 @@
+/* ==========================================================================
+   components.css
+   UI components. Naming follows BEM:
+     .block · .block__element · .block--modifier · state classes use .is-*
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Brand
+   ========================================================================== */
+.brand {
+  display: block;
+  margin: 0 14px 7px;
+}
+.brand__name {
+  font-family: var(--font-serif);
+  font-size: var(--fs-brand);
+  letter-spacing: -1px;
+}
+.brand__sun {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: var(--space-1);
+  vertical-align: top;
+  border-radius: 50%;
+  background: var(--color-sun);
+}
+.brand__tagline {
+  display: block;
+  margin-top: 10px;
+  font-size: var(--fs-3xs);
+  letter-spacing: var(--tracking-tagline);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+.nav { margin-top: 55px; }
+
+.nav__list {
+  display: grid;
+  gap: 9px;
+}
+
+.nav__item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 14px 15px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-soft);
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+.nav__item:hover     { background: var(--color-nav-hover); }
+.nav__item.is-active { background: var(--color-nav-active); color: var(--color-accent-strong); }
+
+
+/* ==========================================================================
+   Top bar controls
+   ========================================================================== */
+.property-select {
+  max-width: 180px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  background: var(--color-sand);
+  font-size: var(--fs-sm);
+}
+
+
+/* ==========================================================================
+   Hero — welcome banner with background photo
+   ========================================================================== */
+.hero {
+  position: relative;
+  isolation: isolate;               /* keeps ::before/::after behind content */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 265px;
+  margin-bottom: 26px;
+  padding: 40px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-hero-fallback);
+}
+
+/* Photo layer */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: url("../assets/images/hero-building.jpg") center 53% / cover no-repeat;
+}
+
+/* Readability gradient */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--hero-overlay);
+}
+
+.hero__title {
+  margin: var(--space-4) 0 var(--space-3);
+  font-family: var(--font-serif);
+  font-size: var(--fs-hero);
+  font-weight: var(--fw-regular);
+  letter-spacing: -1.3px;
+}
+
+.hero__lead {
+  max-width: 290px;
+  font-size: var(--fs-md);
+  line-height: 1.6;
+  color: #69645b;
+}
+
+/* AQI badge — pinned bottom-right of hero */
+.aqi-badge {
+  position: absolute;
+  right: 22px;
+  bottom: var(--space-5);
+  min-width: 140px;
+  padding: var(--space-3) 17px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-xs);
+  background: rgba(250, 249, 246, 0.94);
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+}
+.aqi-badge__label { display: block; }
+.aqi-badge__value {
+  display: block;
+  margin-top: 5px;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-regular);
+  color: var(--color-ink);
+}
+
+
+/* ==========================================================================
+   Toolbar — date filter + primary action
+   ========================================================================== */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: var(--space-5) 0 22px;
+}
+
+.date-range {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.date-range__input {
+  padding: 9px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xs);
+  background: var(--color-white);
+  font-size: var(--fs-sm);
+  color: #56534d;
+}
+.date-range__input[aria-invalid="true"] { border-color: var(--color-accent); }
+.date-range__sep { color: #a59b8c; }
+
+.range-label {
+  font-size: var(--fs-2xs);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+  padding: 11px 17px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  font-size: var(--fs-sm);
+  transition: border-color var(--duration) var(--ease), background var(--duration) var(--ease);
+}
+.btn:hover { border-color: var(--color-sand); }
+
+.btn--primary {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+.btn--primary:hover { border-color: var(--color-accent-strong); background: var(--color-accent-strong); }
+
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Text-only action (Export, View tickets, …) */
+.text-btn {
+  padding: var(--space-2) 0;
+  font-size: var(--fs-sm);
+  color: var(--color-accent-text);
+}
+.text-btn:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+
+/* ==========================================================================
+   Section — titled block (Tickets, My permits)
+   ========================================================================== */
+.section { margin: 30px 0; }
+
+.section__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.section__title {
+  font-size: var(--fs-section);
+  font-weight: var(--fw-medium);
+  letter-spacing: -0.25px;
+}
+.section__tools {
+  display: flex;
+  gap: 22px;
+}
+
+
+/* ==========================================================================
+   Metric group
+   Default    → Tickets: one white panel, 5 columns with thin dividers
+   --compact  → Permits: beige strip, label left / count right
+   ========================================================================== */
+.metric-group {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding: 26px var(--space-2);
+  overflow: hidden;
+  border: 1px solid var(--color-line-panel);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  box-shadow: var(--shadow-panel);
+}
+
+.metric-group > li { border-right: 1px solid var(--color-line-soft); }
+.metric-group > li:last-child { border-right: 0; }
+
+/* Single metric (rendered as <button>) */
+.metric {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  min-height: 135px;
+  padding: 6px 25px;
+  text-align: left;
+  transition: background var(--duration) var(--ease);
+}
+.metric:hover { background: var(--color-metric-hover); }
+
+.metric__label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-label);
+}
+
+.metric__value {
+  margin: 21px 0 13px;
+  font-size: var(--fs-metric);
+  font-weight: var(--fw-light);
+  line-height: 1;
+  letter-spacing: -2px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-number);
+}
+
+.metric__hint {
+  font-size: var(--fs-2xs);
+  line-height: 1.4;
+  color: var(--color-subtle);
+}
+
+/* Arrow appears on hover / keyboard focus */
+.metric__arrow {
+  position: absolute;
+  right: 22px;
+  bottom: 10px;
+  font-size: 14px;
+  color: var(--color-arrow);
+  opacity: 0;
+  transform: translateX(-3px);
+  transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease);
+}
+.metric:hover .metric__arrow,
+.metric:focus-visible .metric__arrow { opacity: 1; transform: none; }
+
+/* Accent modifier — used for "Open" tickets */
+.metric--accent .metric__value { color: var(--color-accent-number); }
+.metric--accent .metric__label::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin: 0 7px 2px 0;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+/* ---- Compact variant (Permits) ----------------------------------------- */
+.metric-group--compact {
+  padding: 19px var(--space-2);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-compact);
+  box-shadow: none;
+}
+.metric-group--compact > li { border-right-color: var(--color-line-compact); }
+
+.metric-group--compact .metric {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 60px;
+  padding: 2px 25px;
+}
+.metric-group--compact .metric:hover { background: var(--color-compact-hover); }
+
+.metric-group--compact .metric__label {
+  font-weight: var(--fw-regular);
+  color: #777064;
+}
+.metric-group--compact .metric__value {
+  margin: 0;
+  font-size: var(--fs-metric-sm);
+  font-weight: var(--fw-regular);
+  letter-spacing: -0.6px;
+  color: #5e594f;
+}
+.metric-group--compact .metric__hint,
+.metric-group--compact .metric__arrow { display: none; }
+
+
+/* ==========================================================================
+   Quick links
+   ========================================================================== */
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 30px;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-line-quick);
+}
+
+.quick-links__item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: 15px 23px;
+  font-size: var(--fs-sm);
+  text-align: left;
+  color: var(--color-text);
+  transition: color var(--duration) var(--ease);
+}
+.quick-links__item:first-child { padding-left: 0; }
+.quick-links__item:hover       { color: var(--color-accent-text); }
+
+.quick-links__arrow {
+  font-size: 15px;
+  color: #ba8c73;
+}
+
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 17px;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-line);
+  font-size: var(--fs-2xs);
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
+
+/* ==========================================================================
+   Modal (native <dialog>)
+   ========================================================================== */
+.modal {
+  width: min(540px, calc(100% - 32px));
+  padding: var(--space-7);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-modal);
+}
+.modal::backdrop { background: var(--backdrop); }
+
+.modal__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.modal__title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-modal);
+  font-weight: var(--fw-regular);
+}
+.modal__close {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--color-paper);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.modal__text {
+  margin: var(--space-2) 0;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+
+/* ==========================================================================
+   Form fields
+   ========================================================================== */
+.field {
+  display: block;
+  margin: 18px 0;
+  font-size: var(--fs-sm);
+}
+.field__control {
+  display: block;
+  width: 100%;
+  margin-top: var(--space-2);
+  padding: var(--space-3);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-xs);
+  background: var(--color-white);
+  color: var(--color-ink);
+}
+textarea.field__control {
+  min-height: 100px;
+  resize: vertical;
+}
+
+
+/* ==========================================================================
+   Toast
+   ========================================================================== */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  z-index: 50;
+  max-width: 90%;
+  padding: 13px var(--space-5);
+  border-radius: var(--radius-sm);
+  background: var(--color-ink);
+  font-size: var(--fs-sm);
+  color: var(--color-white);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+  transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease);
+}
+.toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+
+/* ==========================================================================
+   Responsive — tablet (≤ 1100px)
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .hero        { min-height: 245px; padding: 30px; }
+  .hero__title { font-size: 36px; }
+
+  .metric                 { padding: 6px 18px; }
+  .metric__value          { font-size: 40px; }
+  .metric__arrow          { right: var(--space-3); }
+
+  .metric-group--compact .metric        { gap: var(--space-2); padding: 2px var(--space-4); }
+  .metric-group--compact .metric__value { font-size: 23px; }
+}
+
+
+/* ==========================================================================
+   Responsive — mobile (≤ 760px)
+   ========================================================================== */
+@media (max-width: 760px) {
+
+  /* Brand + nav become a compact horizontal header */
+  .brand          { margin: 0; }
+  .brand__name    { font-size: 23px; }
+  .brand__tagline { display: none; }
+
+  .nav       { margin-top: var(--space-5); }
+  .nav__list { display: flex; gap: var(--space-1); overflow-x: auto; }
+  .nav__item { padding: var(--space-3) 10px; font-size: var(--fs-sm); white-space: nowrap; }
+  .nav__icon { display: none; }
+
+  /* Hero */
+  .hero          { align-items: flex-start; min-height: 260px; padding: 25px; }
+  .hero::before  { background-position: 62% center; }
+  .hero::after   { background: var(--hero-overlay-mobile); }
+  .hero__title   { font-size: 32px; }
+  .hero__lead    { max-width: 190px; font-size: var(--fs-sm); }
+  .aqi-badge     { right: 14px; bottom: 14px; min-width: 120px; padding: 9px var(--space-3); font-size: var(--fs-2xs); }
+  .aqi-badge__value { font-size: var(--fs-sm); }
+
+  /* Toolbar stacks */
+  .toolbar            { flex-direction: column; align-items: flex-start; }
+  .date-range         { gap: 6px; }
+  .date-range__input  { max-width: 142px; }
+
+  .section__head      { gap: var(--space-3); }
+  .section__head .text-btn { font-size: var(--fs-xs); }
+
+  /* Tickets: 2 columns, last item spans full width as a row */
+  .metric-group {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+  }
+  .metric-group > li {
+    border-right: 1px solid var(--color-line-soft);
+    border-bottom: 1px solid var(--color-line-soft);
+  }
+  .metric-group > li:nth-child(2n) { border-right: 0; }
+  .metric-group > li:last-child   { grid-column: 1 / -1; border: 0; }
+
+  .metric         { min-height: 140px; padding: var(--space-5) 10px; }
+  .metric__value  { margin: 18px 0 10px; font-size: 40px; }
+  .metric__arrow  { display: none; }
+
+  .metric-group:not(.metric-group--compact) > li:last-child .metric {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 100px;
+  }
+  .metric-group:not(.metric-group--compact) > li:last-child .metric__value {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    margin: 0;
+    font-size: 36px;
+  }
+  .metric-group:not(.metric-group--compact) > li:last-child .metric__hint { grid-column: 1; }
+
+  /* Permits: vertical list */
+  .metric-group--compact {
+    grid-template-columns: 1fr;
+    padding: 6px 18px;
+  }
+  .metric-group--compact > li,
+  .metric-group--compact > li:nth-child(2n) {
+    grid-column: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--color-line-compact);
+  }
+  .metric-group--compact > li:last-child { border-bottom: 0; }
+  .metric-group--compact .metric {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 57px;
+    padding: 13px 0;
+  }
+  .metric-group--compact .metric__value { margin: 0; font-size: 23px; }
+
+  /* Quick links: vertical list */
+  .quick-links { grid-template-columns: 1fr; margin-top: 22px; }
+  .quick-links__item,
+  .quick-links__item:first-child { padding: 17px 0; border-bottom: 1px solid var(--color-line); }
+  .quick-links__item:last-child  { border-bottom: 0; }
+
+  .site-footer { gap: var(--space-5); line-height: 1.6; }
+}
