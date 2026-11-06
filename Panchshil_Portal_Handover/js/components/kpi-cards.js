@@ -1,0 +1,2 @@
+/* Panchshil Customer Portal — KPI stat cards: kpis(containerSelector, [[label, value, iconId], ...]) */
+const kpis=(el,arr)=>{const k=$(el);if(!k)return;k.innerHTML=arr.map((x,i)=>'<button type="button" class="kpi"><span class="kic">'+ic(x[2])+'</span><span class="kn">'+x[1]+'</span><span class="kl">'+x[0]+'</span></button>').join('');k.querySelectorAll('.kpi').forEach(b=>b.onclick=()=>{const was=b.classList.contains('sel');k.querySelectorAll('.kpi').forEach(s=>s.classList.remove('sel'));if(!was)b.classList.add('sel')})};

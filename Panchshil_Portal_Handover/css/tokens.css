@@ -1,0 +1,10 @@
+/* Panchshil Customer Portal — design tokens (colours). Change brand colours here. */
+:root{
+  --paper:#f6f4ef;
+  --white:#fff;
+  --ink:#292a2c;
+  --muted:#77746e;
+  --line:#e8e3da;
+  --accent:#df7856;
+  --sand:#c7b99b
+}
