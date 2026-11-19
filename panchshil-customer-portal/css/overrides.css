@@ -1,0 +1,536 @@
+/* Panchshil Customer Portal — Approved visual refinements (hero blend, logo, type scale, compact cards).
+   Load LAST. These rules override earlier files on purpose; when porting, fold them into the components they touch. */
+
+/* hero photo + compact KPI cards */
+.hero {
+  min-height:280px;
+}
+
+.hero:after {
+  background:linear-gradient(90deg,rgba(246,244,239,.97) 0%,rgba(246,244,239,.9) 26%,rgba(246,244,239,.5) 46%,rgba(246,244,239,0) 70%)!important;
+}
+
+.kpis {
+  gap:10px;
+  margin-bottom:22px;
+}
+
+.kpi,.kpis.big .kpi {
+  flex-direction:row;
+  align-items:center;
+  gap:12px;
+  padding:12px 14px;
+  border-radius:10px;
+}
+
+.kpi:hover {
+  transform:translateY(-1px);
+}
+
+.kpi .kic,.kpis.big .kic {
+  width:30px;
+  height:30px;
+  border-radius:8px;
+  margin:0;
+}
+
+.kpi .kic .ic {
+  width:15px;
+  height:15px;
+}
+
+.kpi .kt {
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+
+.kpi .kn,.kpis.big .kn {
+  font-size:20px;
+  font-weight:500;
+  letter-spacing:-.4px;
+}
+
+.kpi .kl {
+  font-size:11.5px;
+  margin-top:3px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.kpis.big {
+  max-width:620px;
+}
+
+@media(max-width:760px) {
+  .kpis.big {
+    --c:2!important;
+  }
+
+  .kpi .kn {
+    font-size:18px!important;
+  }
+
+  .hero:after {
+    background:linear-gradient(90deg,rgba(246,244,239,.97),rgba(246,244,239,.85) 45%,rgba(246,244,239,.15))!important;
+  }
+
+  .hero:before {
+    background-position:60% 33%!important;
+  }
+}
+
+/* fit sky + full buildings inside original banner height */
+.hero:after {
+  background:linear-gradient(90deg,#f6f4ef 0%,#f6f4ef 38%,rgba(246,244,239,.75) 44%,rgba(246,244,239,.25) 52%,rgba(246,244,239,0) 60%)!important;
+}
+
+@media(max-width:760px) {
+  .hero:before {
+    background-size:cover!important;
+    background-position:62% 45%!important;
+  }
+}
+
+/* smooth banner blend — photo fades out via eased mask, no hard edge */
+.hero {
+  background:#f4f1eb!important;
+}
+
+.hero:before {
+  left:auto!important;
+  right:0;
+  width:68%;
+  background-color:transparent!important;
+  background-size:cover!important;
+  background-position:center 34%!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.03) 8%,rgba(0,0,0,.12) 16%,rgba(0,0,0,.28) 24%,rgba(0,0,0,.48) 32%,rgba(0,0,0,.68) 40%,rgba(0,0,0,.84) 48%,rgba(0,0,0,.95) 56%,#000 64%);
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.03) 8%,rgba(0,0,0,.12) 16%,rgba(0,0,0,.28) 24%,rgba(0,0,0,.48) 32%,rgba(0,0,0,.68) 40%,rgba(0,0,0,.84) 48%,rgba(0,0,0,.95) 56%,#000 64%);
+}
+
+.hero:after {
+  background:linear-gradient(90deg,rgba(244,241,235,.9) 0%,rgba(244,241,235,.55) 30%,rgba(244,241,235,0) 55%)!important;
+}
+
+@media(max-width:760px) {
+  .hero:before {
+    width:100%;
+    background-position:62% 40%!important;
+    -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.25),#000 70%);
+    mask-image:linear-gradient(90deg,rgba(0,0,0,.25),#000 70%);
+  }
+
+  .hero:after {
+    background:linear-gradient(90deg,rgba(244,241,235,.95),rgba(244,241,235,.7) 50%,rgba(244,241,235,.1))!important;
+  }
+}
+
+/* waste cards — same card system, wider 2-up with supporting detail */
+.wk .kpi {
+  cursor:default;
+  padding:14px 18px;
+}
+
+.wk .kpi:hover {
+  transform:none;
+  box-shadow:none;
+  border-color:#ebe6dd;
+}
+
+.wk .kt {
+  flex:none;
+}
+
+.wk .kx {
+  margin-left:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:7px;
+  min-width:0;
+  padding-left:16px;
+  align-self:stretch;
+  justify-content:center;
+}
+
+.wk .kxl {
+  font-size:11px;
+  color:#a59b8c;
+  white-space:nowrap;
+}
+
+.wk .kbar {
+  display:block;
+  width:150px;
+  height:5px;
+  border-radius:5px;
+  background:#f1ece4;
+  overflow:hidden;
+}
+
+.wk .kbar i {
+  display:block;
+  height:100%;
+  border-radius:5px;
+  background:linear-gradient(90deg,#e9a184,#df7856);
+}
+
+@media(max-width:760px) {
+  .kpis.wk {
+    --c:1!important;
+  }
+
+  .wk .kbar {
+    width:100px;
+  }
+}
+
+/* official logo + slightly larger, more readable type */
+.brand {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin:0 14px 7px;
+  font:inherit;
+  letter-spacing:0;
+}
+
+.brand img {
+  width:64px;
+  height:64px;
+  display:block;
+  flex:none;
+}
+
+.brand small {
+  margin:0!important;
+  font:600 9.5px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+  letter-spacing:2.2px!important;
+  color:#5f5a52!important;
+  text-transform:uppercase;
+}
+
+body {
+  font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+
+p {
+  color:#5c5850;
+}
+
+.eyebrow {
+  font-size:10.5px;
+  color:#5f5a52;
+}
+
+nav button {
+  font-size:14.5px;
+  color:#4f4b45;
+}
+
+.hero h1 {
+  font-size:46px!important;
+}
+
+.hero p {
+  font-size:14.5px!important;
+  max-width:330px!important;
+  color:#57534b!important;
+}
+
+.hero .eyebrow {
+  font-size:11px;
+}
+
+.hero .air {
+  font-size:12.5px;
+}
+
+.hero .air strong {
+  font-size:14px!important;
+}
+
+.sectionhead h2 {
+  font-size:17.5px!important;
+}
+
+.metric .label {
+  font-size:13px!important;
+  color:#55514a!important;
+}
+
+.metric .hint {
+  font-size:11.5px!important;
+  color:#7a7368!important;
+}
+
+.permits .metric .label {
+  font-size:13px!important;
+}
+
+.textbtn,.btn,.dates input {
+  font-size:13px!important;
+}
+
+.essentials button {
+  font-size:13.5px!important;
+}
+
+.notice {
+  font-size:11px!important;
+}
+
+.ph h1 {
+  font-size:42px;
+}
+
+.ph p {
+  font-size:14.5px;
+}
+
+.kpi .kn {
+  font-size:21px!important;
+}
+
+.kpi .kl {
+  font-size:12.5px!important;
+  color:#625d55!important;
+}
+
+.wk .kxl {
+  font-size:12px!important;
+}
+
+th {
+  font-size:11px;
+}
+
+.xl th {
+  font-size:12.5px!important;
+}
+
+td {
+  font-size:13.5px;
+  color:#36342f;
+}
+
+.pill {
+  font-size:12px;
+}
+
+.srch input,.add,.btn2,.pg,.pg select,.pgb button,.pop label,.pop select,.hm {
+  font-size:13.5px;
+}
+
+.chip {
+  font-size:12.5px;
+}
+
+.fl {
+  font-size:13px;
+}
+
+.fl select,.fl textarea {
+  font-size:14px;
+}
+
+.empt p {
+  font-size:13.5px;
+}
+
+.drop small {
+  font-size:12.5px;
+}
+
+@media(max-width:1100px) {
+  .hero h1 {
+    font-size:40px!important;
+  }
+}
+
+@media(max-width:760px) {
+  .brand img {
+    width:56px;
+    height:56px;
+  }
+
+  .brand small {
+    display:none;
+  }
+
+  .hero h1 {
+    font-size:34px!important;
+  }
+
+  .hero p {
+    font-size:13.5px!important;
+  }
+
+  .hero:after {
+    background:linear-gradient(180deg,rgba(244,241,235,.96) 0%,rgba(244,241,235,.85) 45%,rgba(244,241,235,.2) 75%,rgba(244,241,235,0))!important;
+  }
+
+  .ph h1 {
+    font-size:34px;
+  }
+}
+
+.essentials {
+  grid-template-columns:repeat(2,1fr)!important;
+}
+
+/* logo only; larger ticket metric text */
+.brand {
+  gap:0;
+}
+
+.metric .label {
+  font-size:14px!important;
+}
+
+.metric .hint {
+  font-size:13px!important;
+  color:#6a645a!important;
+  margin-top:2px;
+}
+
+.metric .num {
+  font-size:50px!important;
+}
+
+.permits .metric .label {
+  font-size:14px!important;
+}
+
+.permits .metric .num {
+  font-size:27px!important;
+}
+
+@media(max-width:760px) {
+  .metric .num {
+    font-size:42px!important;
+  }
+
+  .metric .hint {
+    font-size:12.5px!important;
+  }
+}
+
+/* photo ~80%, fade ~20% */
+.hero:before {
+  left:auto!important;
+  right:0!important;
+  width:82%!important;
+  background-size:cover!important;
+  background-position:center 34%!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.35) 8%,rgba(0,0,0,.75) 16%,#000 24%)!important;
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.35) 8%,rgba(0,0,0,.75) 16%,#000 24%)!important;
+}
+
+.hero:after {
+  background:linear-gradient(90deg,rgba(244,241,235,.95) 0%,rgba(244,241,235,.8) 18%,rgba(244,241,235,.35) 30%,rgba(244,241,235,0) 40%)!important;
+}
+
+.hero h1,.hero p,.hero .eyebrow {
+  text-shadow:0 0 18px rgba(244,241,235,.9),0 0 4px rgba(244,241,235,.8);
+}
+
+@media(max-width:760px) {
+  .hero:before {
+    width:100%!important;
+    -webkit-mask-image:none!important;
+    mask-image:none!important;
+  }
+
+  .hero:after {
+    background:linear-gradient(180deg,rgba(244,241,235,.95) 0%,rgba(244,241,235,.88) 45%,rgba(244,241,235,.2) 62%,rgba(244,241,235,0) 70%)!important;
+  }
+}
+
+/* smooth eased blend */
+.hero:before {
+  left:0!important;
+  right:0!important;
+  width:100%!important;
+  background-position:60% 34%!important;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 14%,rgba(0,0,0,0.000) 14.0%,rgba(0,0,0,0.011) 16.1%,rgba(0,0,0,0.043) 18.2%,rgba(0,0,0,0.092) 20.4%,rgba(0,0,0,0.156) 22.5%,rgba(0,0,0,0.232) 24.6%,rgba(0,0,0,0.316) 26.8%,rgba(0,0,0,0.407) 28.9%,rgba(0,0,0,0.500) 31.0%,rgba(0,0,0,0.593) 33.1%,rgba(0,0,0,0.684) 35.2%,rgba(0,0,0,0.768) 37.4%,rgba(0,0,0,0.844) 39.5%,rgba(0,0,0,0.908) 41.6%,rgba(0,0,0,0.957) 43.8%,rgba(0,0,0,0.989) 45.9%,rgba(0,0,0,1.000) 48.0%)!important;
+  mask-image:linear-gradient(90deg,transparent 0%,transparent 14%,rgba(0,0,0,0.000) 14.0%,rgba(0,0,0,0.011) 16.1%,rgba(0,0,0,0.043) 18.2%,rgba(0,0,0,0.092) 20.4%,rgba(0,0,0,0.156) 22.5%,rgba(0,0,0,0.232) 24.6%,rgba(0,0,0,0.316) 26.8%,rgba(0,0,0,0.407) 28.9%,rgba(0,0,0,0.500) 31.0%,rgba(0,0,0,0.593) 33.1%,rgba(0,0,0,0.684) 35.2%,rgba(0,0,0,0.768) 37.4%,rgba(0,0,0,0.844) 39.5%,rgba(0,0,0,0.908) 41.6%,rgba(0,0,0,0.957) 43.8%,rgba(0,0,0,0.989) 45.9%,rgba(0,0,0,1.000) 48.0%)!important;
+}
+
+.hero:after {
+  background:linear-gradient(90deg,rgba(244,241,235,.97) 0%,rgba(244,241,235,.97) 20%,rgba(244,241,235,0.970) 20.0%,rgba(244,241,235,0.951) 22.2%,rgba(244,241,235,0.898) 24.3%,rgba(244,241,235,0.818) 26.5%,rgba(244,241,235,0.719) 28.7%,rgba(244,241,235,0.605) 30.8%,rgba(244,241,235,0.485) 33.0%,rgba(244,241,235,0.365) 35.2%,rgba(244,241,235,0.251) 37.3%,rgba(244,241,235,0.152) 39.5%,rgba(244,241,235,0.072) 41.7%,rgba(244,241,235,0.019) 43.8%,rgba(244,241,235,0.000) 46.0%)!important;
+}
+
+.hero h1,.hero p,.hero .eyebrow {
+  text-shadow:none!important;
+}
+
+@media(max-width:760px) {
+  .hero:before {
+    -webkit-mask-image:none!important;
+    mask-image:none!important;
+  }
+}
+
+@media(max-width:760px) {
+  .hero:after {
+    background:linear-gradient(180deg,rgba(244,241,235,.96) 0%,rgba(244,241,235,.9) 42%,rgba(244,241,235,.55) 55%,rgba(244,241,235,.15) 66%,rgba(244,241,235,0) 74%)!important;
+  }
+}
+
+/* whole building cluster visible; photo panel on right, eased fade only at its left edge */
+.hero:before {
+  left:auto!important;
+  right:0!important;
+  width:70%!important;
+  background-size:cover!important;
+  background-position:center 30%!important;
+  -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0.000) 0.0%,rgba(0,0,0,0.011) 2.1%,rgba(0,0,0,0.043) 4.2%,rgba(0,0,0,0.092) 6.4%,rgba(0,0,0,0.156) 8.5%,rgba(0,0,0,0.232) 10.6%,rgba(0,0,0,0.316) 12.8%,rgba(0,0,0,0.407) 14.9%,rgba(0,0,0,0.500) 17.0%,rgba(0,0,0,0.593) 19.1%,rgba(0,0,0,0.684) 21.2%,rgba(0,0,0,0.768) 23.4%,rgba(0,0,0,0.844) 25.5%,rgba(0,0,0,0.908) 27.6%,rgba(0,0,0,0.957) 29.8%,rgba(0,0,0,0.989) 31.9%,rgba(0,0,0,1.000) 34.0%)!important;
+  mask-image:linear-gradient(90deg,rgba(0,0,0,0.000) 0.0%,rgba(0,0,0,0.011) 2.1%,rgba(0,0,0,0.043) 4.2%,rgba(0,0,0,0.092) 6.4%,rgba(0,0,0,0.156) 8.5%,rgba(0,0,0,0.232) 10.6%,rgba(0,0,0,0.316) 12.8%,rgba(0,0,0,0.407) 14.9%,rgba(0,0,0,0.500) 17.0%,rgba(0,0,0,0.593) 19.1%,rgba(0,0,0,0.684) 21.2%,rgba(0,0,0,0.768) 23.4%,rgba(0,0,0,0.844) 25.5%,rgba(0,0,0,0.908) 27.6%,rgba(0,0,0,0.957) 29.8%,rgba(0,0,0,0.989) 31.9%,rgba(0,0,0,1.000) 34.0%)!important;
+}
+
+.hero:after {
+  background:linear-gradient(90deg,rgba(244,241,235,.6) 0%,rgba(244,241,235,0) 35%)!important;
+}
+
+@media(max-width:760px) {
+  .hero:before {
+    width:100%!important;
+    -webkit-mask-image:none!important;
+    mask-image:none!important;
+    background-position:center 30%!important;
+  }
+}
+
+@media(max-width:760px) {
+  .hero:after {
+    background:linear-gradient(180deg,rgba(244,241,235,.96) 0%,rgba(244,241,235,.9) 42%,rgba(244,241,235,.55) 55%,rgba(244,241,235,.15) 66%,rgba(244,241,235,0) 74%)!important;
+  }
+}
+
+/* logo centred in sidebar, softened */
+.brand {
+  justify-content:center;
+  margin:0 0 10px!important;
+}
+
+.brand img {
+  width:58px!important;
+  height:58px!important;
+  opacity:.92;
+  border-radius:3px;
+}
+
+@media(max-width:760px) {
+  .brand {
+    justify-content:flex-start;
+  }
+
+  .brand img {
+    width:48px!important;
+    height:48px!important;
+  }
+}
+

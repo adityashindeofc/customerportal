@@ -1,0 +1,10 @@
+{
+  "name": "panchshil-customer-portal-ui",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Panchshil Customer Portal front-end UI (approved design v18). Static HTML/CSS/JS, no build step.",
+  "scripts": {
+    "start": "npx serve . -l 8080",
+    "format": "npx prettier --write \"**/*.{html,css,js,md}\""
+  }
+}
